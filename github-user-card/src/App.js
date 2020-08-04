@@ -2,13 +2,16 @@ import React, { Component } from 'react';
 import DisplayCards from './components/DisplayCards'
 import Axios from 'axios';
 
-const initialUsers = {
+const urls = ['justsml', 'royeradames', 'BigKnell', 'Ladrillo', 'tetondan', 'dustinmyers']
+
+const initialUsers = [{
   avatar_url: '',
   name: '',
   bio: '',
   public_repos: '',
+  followerslogin: ['user', 'another user'],
   
-}
+}]
 
 class App extends Component {
   constructor(props) {
@@ -20,7 +23,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    Axios.get('https://api.github.com/users/royeradames')
+    Axios.get('https://api.github.com/users/justsml')
     .then(resp => {
       this.setState({users: resp.data})
 

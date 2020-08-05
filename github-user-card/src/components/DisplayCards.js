@@ -85,7 +85,16 @@ const Styles = styled.div`
 class DisplayCards extends Component {
 
     render() {
-        debugger
+        const generateFollowers = () => {
+            // debugger
+            return this.props.users.map(aUser => {
+                // debugger
+                return aUser.followersLogin.map(aFollower => {
+                    // debugger
+                    return <option value={aFollower}>{aFollower}</option>
+                })
+            })
+        }
         return (
             <Styles>
                 <h1>DisplayCards</h1>
@@ -94,24 +103,20 @@ class DisplayCards extends Component {
                         <img src={this.props.users.avatar_url} alt={`Avatar of ${this.props.users.name}`} />
                     </div>
                     <div className='card-body content'>
-                        <div class="header">
+                        <div className="header">
                             <h2>{this.props.users.name}</h2>
                         </div>
-                        <div class="description">
+                        <div className="description">
                             {/* List of Friends */}
                             <label for="followers">Followers:</label>
                             <select name="followerslogin" id="followers">
                                 <option disabled>Click to see</option>
                                 {/* generate list of followers name */}
                                 {
-                                    this.props.users.map(aUser => {
-                                        return aUser.followerslogin.map(aFollower => {
-                                            return <option value="{aFollower}">{aFollower}</option>
-                                        })
-                                    })
+                                    generateFollowers()
                                 }
-                                
-                                
+
+
                             </select>
                             {/* end of list */}
                             <p>{this.props.users.bio}</p>

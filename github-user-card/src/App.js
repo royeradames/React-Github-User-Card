@@ -57,28 +57,6 @@ class App extends Component {
         debugger
       })
 
-    // // get user followers from Github
-    // axios.get('https://api.github.com/users/justsml/following')
-    // .then(resp => {
-    //   //get me a copy of the users: value
-    //   const addingFollowersLogin = this.state.users.slice()
-
-    //   //gives me an array of the the followers id
-    //   const newFollowersLogin = addingFollowersLogin.map(aUser => {
-    //     return aUser.followersLogin = resp.data.map(aFollower => {
-    //       return aFollower.login
-    //     })
-    //   })
-    //   //add new followersLogin to copy of the uers value
-    //   //because it's a copy you can assign it by calling it
-    //   addingFollowersLogin[0].followersLogin = newFollowersLogin[0]
-    //   //set new state with the new followersLogin as it's value
-    //   this.setState({users: addingFollowersLogin})
-
-    // })
-    // .catch( error => {
-    //   debugger
-    // })
 
   }
   render() {

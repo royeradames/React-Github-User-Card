@@ -82,59 +82,54 @@ const Styles = styled.div`
 
 
 `
-
-
-
-export default function DisplayCards({ users }) {
-    const generateFollowers = () => {
-        // debugger
-        return users.map(aUser => {
+class DisplayCards extends Component {
+    
+    render() {
+        const generateFollowers = () => {
             // debugger
-            return aUser.followersLogin.map(aFollower => {
+            return this.props.users.map(aUser => {
                 // debugger
-                return <option value={aFollower}>{aFollower}</option>
+                return aUser.followersLogin.map(aFollower => {
+                    // debugger
+                    return <option value={aFollower}>{aFollower}</option>
+                })
             })
-        })
-    }
-    const displayUsers = () => {
+        }
+        console.log(this.props)
         return (
-
-            users.map(aUser => {
-                return <Styles>
-
-                    <h1>DisplayCards</h1>
-                    <div className='card-container card ui'>
-                        <div className='card-header img'>
-                            <img src={aUser.avatar_url} alt={`Avatar of ${aUser.name}`} />
+            <Styles>
+                <h1>DisplayCards</h1>
+                <div className='card-container card ui'>
+                    <div className='card-header img'>
+                        <img src={this.props.users.avatar_url} alt={`Avatar of ${this.props.users.name}`} />
+                    </div>
+                    <div className='card-body content'>
+                        <div className="header">
+                            <h2>{this.props.users.name}</h2>
                         </div>
-                        <div className='card-body content'>
-                            <div className="header">
-                                <h2>{aUser.name}</h2>
-                            </div>
-                            <div className="description">
-                                {/* List of Friends */}
-                                <label htmlFor="followers">Followers:</label>
-                                <select name="followerslogin" id="followers">
-                                    <option disabled>Click to see</option>
-                                    {/* generate list of followers name */}
-                                    {
-                                        aUser.followersLogin.map(aFollower => {
-                                            // debugger
-                                            return <option value={aFollower}>{aFollower}</option>
-                                        })
-                                    }
-                                </select>
-                                {/* end of list */}
-                                <p>{aUser.bio}</p>
-                            </div>
-                        </div>
-                        <div className='card-footer extra content'>
-                            <p>Total Public Repos: {aUser.public_repos}</p>
+                        <div className="description">
+                            {/* List of Friends */}
+                            <label htmlFor="followers">Followers:</label>
+                            <select name="followerslogin" id="followers">
+                                <option disabled>Click to see</option>
+                                {/* generate list of followers name */}
+                                {
+                                    generateFollowers()
+                                }
+
+
+                            </select>
+                            {/* end of list */}
+                            <p>{this.props.users.bio}</p>
                         </div>
                     </div>
-                </Styles>
-            })
-        )
+                    <div className='card-footer extra content'>
+                        <p>Total Public Repos: {this.props.users.public_repos}</p>
+                    </div>
+                </div>
+            </Styles>
+        );
     }
-    return displayUsers()
 }
+
+export default DisplayCards;
